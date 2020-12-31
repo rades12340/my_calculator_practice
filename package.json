@@ -1,4 +1,5 @@
 {
+  "homepage": "https://rades12340.github.io/my_calculator_practice",
   "name": "calculatorjs",
   "version": "1.0.0",
   "main": "index.js",
@@ -11,6 +12,8 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
     "build": "webpack"
