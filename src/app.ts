@@ -1,3 +1,4 @@
+import "../styles.css"
 
 window.addEventListener('load', () => {
     const elements = document.querySelectorAll('button')! as NodeListOf<HTMLButtonElement>;

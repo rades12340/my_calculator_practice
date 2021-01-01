@@ -9,7 +9,16 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              insert: "head", // insert style tag inside of <head>
+              injectType: "singletonStyleTag", // this is for wrap all your style in just one style tag
+            },
+          },
+          "css-loader",
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
