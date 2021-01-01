@@ -1,5 +1,5 @@
 {
-  "homepage": "https://rades12340.github.io/my_calculator_practice",
+  "homepage": "https://rades12340.github.io/my_calculator_practice/",
   "name": "calculatorjs",
   "version": "1.0.0",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open",
     "build": "webpack"
@@ -23,6 +23,7 @@
     "css-loader": "^5.0.1",
     "csv-loader": "^3.0.3",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
