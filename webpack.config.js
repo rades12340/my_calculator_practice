@@ -1,24 +1,24 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //installed via npm
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
   mode: "development",
   entry: ["./src/app.ts"],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: true }),
+    new HtmlWebpackPlugin({
+      favicon: "./favicon.ico",
+      template: "./index.html",
+    }),
+  ],
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: [
-          {
-            loader: "style-loader",
-            options: {
-              insert: "head", // insert style tag inside of <head>
-              injectType: "singletonStyleTag", // this is for wrap all your style in just one style tag
-            },
-          },
-          "css-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -50,13 +50,7 @@ module.exports = {
   devServer: {
     contentBase: "./dist",
   },
-  plugins: [
-    new CleanWebpackPlugin({ cleanStaleWebpackAssets: true }),
-    new HtmlWebpackPlugin({
-      favicon: "./favicon.ico",
-      template: "./index.html",
-    }),
-  ],
+
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
